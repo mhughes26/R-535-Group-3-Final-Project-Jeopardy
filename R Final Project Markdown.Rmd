@@ -14,3 +14,8 @@ output: html_document
 #Moved this file to the data folder. Does it still work?
 
 #Got it out of the writing folder again.
+```{r}
+library(readr)
+clues <- read_tsv("./data/master_season1-35.tsv")
+```
+
