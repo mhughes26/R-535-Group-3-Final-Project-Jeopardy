@@ -6,7 +6,10 @@ output: html_document
 ---
 
 ```{r}
-#This is a test to see if everything is chill. 
+library(readr)
+clues <- read_tsv("./data/master_season1-35.tsv")
+
+
 ```
 #another test from SW
 
