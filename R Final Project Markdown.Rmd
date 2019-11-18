@@ -1,0 +1,16 @@
+---
+title: "R Final Project Markdown"
+author: "Matthew Hughes"
+date: "November 13, 2019"
+output: html_document
+---
+
+```{r}
+#This is a test to see if everything is chill. 
+```
+#another test from SW
+
+#And another test. Just to remember :)
+#Moved this file to the data folder. Does it still work?
+
+#Got it out of the writing folder again.
