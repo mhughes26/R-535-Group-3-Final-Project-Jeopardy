@@ -12,5 +12,3 @@ output: html_document
 
 #And another test. Just to remember :)
 #Moved this file to the data folder. Does it still work?
-
-#Got it out of the writing folder again.
