@@ -11,3 +11,8 @@ output: html_document
 #another test from SW
 
 #And another test. Just to remember :)
+#Moved this file to the data folder. Does it still work?
+
+#Got it out of the writing folder again.
+
+dggdthftyh
