@@ -31,12 +31,22 @@ clean <- clues %>%
 answers <- clean %>% 
   select(answer)
 years_data <- answers %>% 
-  mutate(years = str_extract(answer, "[0-9]{4}")) %>% 
-  arrange(desc(years)) %>% 
-  mutate(amended = str_extract(answer, "'[0-9]{2}")) %>% 
+  mutate(years = str_extract(answer, "[0-9]{4}")) %>%
+   filter(str_count(years)==4)
+
+
+
+#years_data_numeric <- as.numeric(years_data$years) %>% 
+  
+
+#arrange(desc(years_data_numeric))
+  
+  
+
+  #mutate(amended = str_extract(answer, "'[0-9]{2}")) 
   #select(answer, years, amended) %>% 
  # filter(!is.na(years)) %>% 
-  filter(!is.na(amended))
+  #filter(!is.na(amended))
   
 years_data
 ```
