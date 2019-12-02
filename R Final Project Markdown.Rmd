@@ -13,3 +13,17 @@ library(flexdashboard)
 ```{r}
 clues <- read_tsv("./data/master_season1-35.tsv")
 ```
+
+```{r}
+clean <- clues %>% 
+  select(category, answer, question)
+answers <- clean %>% 
+  select(answer)
+years_data <- answers %>% 
+  mutate(years = str_extract(answer, "[0-9]{4}")) %>% 
+  select(answer, years) %>% 
+  filter(!is.na(years))
+  
+years_data
+```
+
