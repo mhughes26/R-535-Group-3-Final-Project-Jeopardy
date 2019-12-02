@@ -1,12 +1,24 @@
 ---
 title: "R Final Project Markdown"
-author: "Matthew Hughes"
+author: "Matthew Hughes, Sherry WeMott, Shayna Warner, Rachel Kanaziz"
 date: "November 13, 2019"
 output: html_document
 ---
+<<<<<<< HEAD
 
 ```{r}
 library(readr)
 clues <- read_tsv("Data/master_season1-35.tsv.zip")
 View(clues)
 ```
+=======
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(flexdashboard)
+```
+
+```{r}
+clues <- read_tsv("./data/master_season1-35.tsv")
+```
+>>>>>>> 21b62930177086104c910a1edf7e3326a09c8349
