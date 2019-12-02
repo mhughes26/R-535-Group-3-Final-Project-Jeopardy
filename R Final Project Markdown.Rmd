@@ -1,21 +1,15 @@
 ---
 title: "R Final Project Markdown"
-author: "Matthew Hughes"
+author: "Matthew Hughes, Sherry WeMott, Shayna Warner, Rachel Kanaziz"
 date: "November 13, 2019"
 output: html_document
 ---
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(flexdashboard)
+```
 
 ```{r}
-library(readr)
 clues <- read_tsv("./data/master_season1-35.tsv")
-
-
 ```
-#another test from SW
-
-#And another test. Just to remember :)
-#Moved this file to the data folder. Does it still work?
-
-#Got it out of the writing folder again.
-
-dggdthftyh
