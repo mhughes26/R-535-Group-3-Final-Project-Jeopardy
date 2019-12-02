@@ -21,8 +21,10 @@ answers <- clean %>%
   select(answer)
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>% 
-  select(answer, years) %>% 
-  filter(!is.na(years))
+  mutate(amended = str_extract(answer, "'[0-9]{2}")) %>% 
+  select(answer, years, amended) %>% 
+  filter(!is.na(years)) %>% 
+  filter(!is.na(amended))
   
 years_data
 ```
