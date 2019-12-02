@@ -6,13 +6,7 @@ output: html_document
 ---
 
 ```{r}
-#This is a test to see if everything is chill. 
+library(readr)
+clues <- read_tsv("Data/master_season1-35.tsv.zip")
+View(clues)
 ```
-#another test from SW
-
-#And another test. Just to remember :)
-#Moved this file to the data folder. Does it still work?
-
-#Got it out of the writing folder again.
-
-dggdthftyh
