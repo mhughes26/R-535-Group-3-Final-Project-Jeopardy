@@ -30,8 +30,8 @@ answers <- clean %>%
   select(answer)
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
-   filter(str_count(years)==4)
-
+  filter(str_count(years)==4) %>% 
+  arrange(desc(years))
 
 
 #years_data_numeric <- as.numeric(years_data$years) %>% 
