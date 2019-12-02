@@ -21,4 +21,21 @@ library(flexdashboard)
 ```{r}
 clues <- read_tsv("./data/master_season1-35.tsv")
 ```
+<<<<<<< HEAD
 >>>>>>> 21b62930177086104c910a1edf7e3326a09c8349
+=======
+
+```{r}
+clean <- clues %>% 
+  select(category, answer, question)
+answers <- clean %>% 
+  select(answer)
+years_data <- answers %>% 
+  mutate(years = str_extract(answer, "[0-9]{4}")) %>% 
+  select(answer, years) %>% 
+  filter(!is.na(years))
+  
+years_data
+```
+
+>>>>>>> 6c036035fca45d7a076a0f2b7f210a52548b3c7b
