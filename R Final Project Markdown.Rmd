@@ -44,7 +44,16 @@ years_data
 
 ```{r}
 years_data <- years_data %>% 
-  slice(413:84470)
+  slice(413:84470) %>% 
+  group_by(years) %>% 
+  mutate(count = n()) %>% 
+  arrange(desc(count)) %>% 
 view(years_data)
+```
+
+```{r}
+#ggplot(data = years_data)+
+ # geom_col(mapping = aes(x = years, y = count))
+
 ```
 
