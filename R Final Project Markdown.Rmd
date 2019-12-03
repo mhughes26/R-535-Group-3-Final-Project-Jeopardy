@@ -5,13 +5,6 @@ date: "November 13, 2019"
 output: html_document
 ---
 
-
-```{r}
-library(readr)
-clues <- read_tsv("Data/master_season1-35.tsv.zip")
-View(clues)
-```
-
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
@@ -49,4 +42,9 @@ years_data <- answers %>%
 years_data
 ```
 
+```{r}
+years_data <- years_data %>% 
+  slice(413:84470)
+view(years_data)
+```
 
