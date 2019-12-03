@@ -45,14 +45,19 @@ view(years_data)
 ```
 
 ```{r}
-ggplot(years_data, aes(x = years)) +
+# trying out a variety of sample plots 
+
+ggplot(years2, aes(x = years)) +
   stat_count(mapping = aes(x = years))
 
-ggplot(years_data, aes(x = years, y = count)) +
+ggplot(years2, aes(x = years, y = count)) +
   geom_point()
 
-ggplot(years_data, aes(x = years, y = count)) +
+ggplot(years2, aes(x = years, y = count)) +
   geom_col()
+
+ggplot(years2, aes(x = years, y = count)) +
+  geom_line()
   
 ```
 ```{r}
