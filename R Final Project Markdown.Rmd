@@ -70,5 +70,7 @@ ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 19
 
 years2 <- transform(years_data, years = as.numeric(years))
 
+sapply(years2, mode)
+
 ```
 
