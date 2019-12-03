@@ -24,21 +24,13 @@ answers <- clean %>%
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
   filter(str_count(years)==4) %>% 
-  arrange(desc(years))
+  arrange(desc(years)) %>% 
+  ungroup()
 
+years2 <- as.numeric(years_data$years)
 
-#years_data_numeric <- as.numeric(years_data$years) %>% 
-  
+joined <- merge(years2, years_data)
 
-#arrange(desc(years_data_numeric))
-  
-  
-
-  #mutate(amended = str_extract(answer, "'[0-9]{2}")) 
-  #select(answer, years, amended) %>% 
- # filter(!is.na(years)) %>% 
-  #filter(!is.na(amended))
-  
 years_data
 ```
 
@@ -53,10 +45,22 @@ view(years_data)
 ```
 
 ```{r}
-ggplot(data = years_data)+
+ggplot(years_data, aes(x = years)) +
   stat_count(mapping = aes(x = years))
+
+ggplot(years_data, aes(x = years, y = count)) +
+  geom_point()
+
+ggplot(years_data, aes(x = years, y = count)) +
+  geom_col()
+  
 ```
 ```{r}
 
 ```
 
+```{r}
+ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 1998, 1970), 
+                top_counts = c(1087, 1024, 1023, 999, 994, 975, 961, 906, 891, 868))
+
+```
