@@ -4,14 +4,14 @@ author: "Matthew Hughes, Sherry WeMott, Shayna Warner, Rachel Kanaziz"
 date: "November 13, 2019"
 output: html_document
 ---
-<<<<<<< HEAD
+
 
 ```{r}
 library(readr)
 clues <- read_tsv("Data/master_season1-35.tsv.zip")
 View(clues)
 ```
-=======
+
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
