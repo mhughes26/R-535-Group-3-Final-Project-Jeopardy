@@ -54,7 +54,7 @@ view(years_data)
 
 ```{r}
 ggplot(data = years_data)+
-  stat_count(mapping = aes(x = years))
+  stat_count(mapping = aes(x = years), color = "dark green")
 ```
 ```{r}
 
