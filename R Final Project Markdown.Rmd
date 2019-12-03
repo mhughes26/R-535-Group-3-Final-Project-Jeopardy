@@ -48,12 +48,15 @@ years_data <- years_data %>%
   group_by(years) %>% 
   mutate(count = n()) %>% 
   arrange(desc(count)) %>% 
+  ungroup()
 view(years_data)
 ```
 
 ```{r}
-#ggplot(data = years_data)+
- # geom_col(mapping = aes(x = years, y = count))
+ggplot(data = years_data)+
+  stat_count(mapping = aes(x = years))
+```
+```{r}
 
 ```
 
