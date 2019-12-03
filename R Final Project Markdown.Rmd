@@ -64,3 +64,11 @@ ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 19
                 top_counts = c(1087, 1024, 1023, 999, 994, 975, 961, 906, 891, 868))
 
 ```
+
+```{r}
+# transform character to vector "years" column
+
+years2 <- transform(years_data, years = as.numeric(years))
+
+```
+
