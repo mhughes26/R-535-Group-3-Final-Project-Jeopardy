@@ -12,51 +12,89 @@ library(flexdashboard)
 ```
 
 ```{r}
+# read in data
 clues <- read_tsv("./data/master_season1-35.tsv")
 ```
 
 
 ```{r}
+#select category, answer, question columns
 clean <- clues %>% 
   select(category, answer, question)
+
+#select only answer column - do we want to keep questions in for reference?
+# Brooke also mentioned it would be interesing to look at lag time between air  
+# date and the years that showed up in the questions (if that's something we 
+# have time for)
+
 answers <- clean %>% 
   select(answer)
+
+#filter years out of answers, create new column, arrange descending
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
   filter(str_count(years)==4) %>% 
-  arrange(desc(years))
+  arrange(desc(years)) %>% 
+  ungroup()
 
-
-#years_data_numeric <- as.numeric(years_data$years) %>% 
-  
-
-#arrange(desc(years_data_numeric))
-  
-  
-
-  #mutate(amended = str_extract(answer, "'[0-9]{2}")) 
-  #select(answer, years, amended) %>% 
- # filter(!is.na(years)) %>% 
-  #filter(!is.na(amended))
-  
 years_data
 ```
 
 ```{r}
+#remove rows with non-date numbers, keep only 1000-2019
 years_data <- years_data %>% 
   slice(413:84470) %>% 
   group_by(years) %>% 
   mutate(count = n()) %>% 
   arrange(desc(count)) %>% 
-  ungroup()
+  ungroup() 
+
 view(years_data)
 ```
 
 ```{r}
 ggplot(data = years_data)+
   stat_count(mapping = aes(x = years), color = "dark green")
-```
-```{r}
+
+# transform years column to numeric
+years2 <- transform(years_data, years = as.numeric(years))
+
+# check data class
+sapply(years2, mode)
+
+
 
 ```
+
+
+```{r}
+# try out a variety of sample plots 
+
+ggplot(years2, aes(x = years)) +
+  stat_count(mapping = aes(x = years))
+
+ggplot(years2, aes(x = years, y = count)) +
+  geom_point()
+
+ggplot(years2, aes(x = years, y = count)) +
+  geom_col()
+
+ggplot(years2, aes(x = years, y = count)) +
+  geom_line()
+
+ggplot(years2, aes(x = years)) +
+  geom_histogram()
+
+```  
+
+
+
+```{r}
+# pull out top 10 ranking years
+ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 1998, 1970), 
+                top_counts = c(1087, 1024, 1023, 999, 994, 975, 961, 906, 891, 868))
+
+```
+
+
 
