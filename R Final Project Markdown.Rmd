@@ -24,16 +24,16 @@ clues <- read_tsv("./data/master_season1-35.tsv")
 # have time for)
 
 answers <- clues %>% 
-  select(category, answer, question)
+  select(category, answer, question, season)
 
 #filter years out of answers, create new column, arrange descending
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
   filter(str_count(years)==4) %>% 
-  arrange(desc(years)) %>% 
   slice(413:84470) %>% 
   group_by(years) %>% 
   mutate(count = n()) %>% 
+  arrange(desc(count)) %>% 
   ungroup()
 
 years_data
