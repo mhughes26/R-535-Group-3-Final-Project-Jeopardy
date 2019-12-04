@@ -18,39 +18,27 @@ clues <- read_tsv("./data/master_season1-35.tsv")
 
 
 ```{r}
-#select category, answer, question columns
-clean <- clues %>% 
-  select(category, answer, question)
 
-#select only answer column - do we want to keep questions in for reference?
 # Brooke also mentioned it would be interesing to look at lag time between air  
 # date and the years that showed up in the questions (if that's something we 
 # have time for)
 
-answers <- clean %>% 
-  select(answer)
+answers <- clues %>% 
+  select(category, answer, question)
 
 #filter years out of answers, create new column, arrange descending
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
   filter(str_count(years)==4) %>% 
   arrange(desc(years)) %>% 
+  slice(413:84470) %>% 
+  group_by(years) %>% 
+  mutate(count = n()) %>% 
   ungroup()
 
 years_data
 ```
 
-```{r}
-#remove rows with non-date numbers, keep only 1000-2019
-years_data <- years_data %>% 
-  slice(413:84470) %>% 
-  group_by(years) %>% 
-  mutate(count = n()) %>% 
-  arrange(desc(count)) %>% 
-  ungroup() 
-
-view(years_data)
-```
 
 ```{r}
 ggplot(data = years_data)+
