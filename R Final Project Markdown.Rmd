@@ -29,12 +29,12 @@ answers <- clues %>%
 #filter years out of answers, create new column, arrange descending
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
-  filter(str_count(years)==4) %>% 
+  filter(str_count(years)==4)%>% 
   slice(413:84470) %>% 
   group_by(years) %>% 
   mutate(count = n()) %>% 
-  arrange(desc(count)) %>% 
-  ungroup()
+ arrange(desc(count)) %>% 
+ ungroup()
 
 years_data
 ```
@@ -42,10 +42,12 @@ years_data
 
 ```{r}
 ggplot(data = years_data)+
-  stat_count(mapping = aes(x = years), color = "dark green")
+ stat_count(mapping = aes(x = years), color = "dark green")
 
 # transform years column to numeric
 years2 <- transform(years_data, years = as.numeric(years))
+
+years2
 
 # check data class
 sapply(years2, mode)
