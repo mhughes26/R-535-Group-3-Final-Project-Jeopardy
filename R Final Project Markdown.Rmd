@@ -24,7 +24,7 @@ clues <- read_tsv("./data/master_season1-35.tsv")
 # have time for)
 
 answers <- clues %>% 
-  select(category, answer, question, season)
+  select(category, answer, question)
 
 #filter years out of answers, create new column, arrange descending
 years_data <- answers %>% 
@@ -73,8 +73,8 @@ ggplot(years2, aes(x = years, y = count)) +
 ggplot(years2, aes(x = years)) +
   geom_histogram()
 
-library(plotly)
-plot_ly(years2, type = "scatter", x = ~ years, y = ~count)
+#library(plotly)
+#plot_ly(years2, type = "scatter", x = ~ years, y = ~count)
 
 
 ```  
