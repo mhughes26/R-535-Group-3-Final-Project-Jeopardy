@@ -22,7 +22,11 @@ clues <- read_tsv("./data/master_season1-35.tsv")
 clean <- clues %>% 
   select(category, answer, question)
 
-#select only answer column - do we want to keep questions in for reference? 
+#select only answer column - do we want to keep questions in for reference?
+# Brooke also mentioned it would be interesing to look at lag time between air  
+# date and the years that showed up in the questions (if that's something we 
+# have time for)
+
 answers <- clean %>% 
   select(answer)
 
@@ -55,8 +59,7 @@ years2 <- transform(years_data, years = as.numeric(years))
 # check data class
 sapply(years2, mode)
 
-# the answer column may also be seen as a list, we may need to fix that if we 
-# intend on adding any of those points to a timeline
+
 ```
 
 
