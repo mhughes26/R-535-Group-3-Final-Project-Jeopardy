@@ -41,11 +41,15 @@ years_data
 
 
 ```{r}
+ggplot(data = years_data)+
+  stat_count(mapping = aes(x = years), color = "dark green")
+
 # transform years column to numeric
 years2 <- transform(years_data, years = as.numeric(years))
 
 # check data class
 sapply(years2, mode)
+
 
 
 ```
