@@ -12,40 +12,56 @@ library(flexdashboard)
 ```
 
 ```{r}
+# read in data
 clues <- read_tsv("./data/master_season1-35.tsv")
 ```
 
 
 ```{r}
+#select category, answer, question columns
 clean <- clues %>% 
   select(category, answer, question)
+
+#select only answer column - do we want to keep questions in for reference? 
 answers <- clean %>% 
   select(answer)
+
+#filter years out of answers, create new column, arrange descending
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
   filter(str_count(years)==4) %>% 
   arrange(desc(years)) %>% 
   ungroup()
 
-years2 <- as.numeric(years_data$years)
-
-joined <- merge(years2, years_data)
-
 years_data
 ```
 
 ```{r}
+#remove rows with non-date numbers, keep only 1000-2019
 years_data <- years_data %>% 
   slice(413:84470) %>% 
   group_by(years) %>% 
   mutate(count = n()) %>% 
   arrange(desc(count)) %>% 
-  ungroup()
+  ungroup() 
+
 view(years_data)
 ```
 
 ```{r}
-# trying out a variety of sample plots 
+# transform years column to numeric
+years2 <- transform(years_data, years = as.numeric(years))
+
+# check data class
+sapply(years2, mode)
+
+# the answer column may also be seen as a list, we may need to fix that if we 
+# intend on adding any of those points to a timeline
+```
+
+
+```{r}
+# try out a variety of sample plots 
 
 ggplot(years2, aes(x = years)) +
   stat_count(mapping = aes(x = years))
@@ -58,24 +74,20 @@ ggplot(years2, aes(x = years, y = count)) +
 
 ggplot(years2, aes(x = years, y = count)) +
   geom_line()
-  
-```
-```{r}
 
-```
+ggplot(years2, aes(x = years)) +
+  geom_histogram()
+
+```  
+
+
 
 ```{r}
+# pull out top 10 ranking years
 ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 1998, 1970), 
                 top_counts = c(1087, 1024, 1023, 999, 994, 975, 961, 906, 891, 868))
 
 ```
 
-```{r}
-# transform character to vector "years" column
 
-years2 <- transform(years_data, years = as.numeric(years))
-
-sapply(years2, mode)
-
-```
 
