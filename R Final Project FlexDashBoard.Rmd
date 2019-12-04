@@ -14,6 +14,6 @@ output:
 
 ###Chart 2
 ```{r}
-#What is going on.
+
 ```
 
