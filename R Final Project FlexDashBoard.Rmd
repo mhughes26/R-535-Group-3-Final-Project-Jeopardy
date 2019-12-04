@@ -9,11 +9,26 @@ output:
 
 ###Chart 1
 ```{r}
+library(tidyverse)
+clues <- read_tsv("./data/master_season1-35.tsv")
+answers <- clues %>% 
+  select(category, answer, question)
+years_data <- answers %>% 
+  mutate(years = str_extract(answer, "[0-9]{4}")) %>%
+  filter(str_count(years)==4) %>% 
+  slice(413:84470) %>% 
+  group_by(years) %>% 
+  mutate(count = n()) %>% 
+  arrange(desc(count)) %>% 
+  ungroup()
+years_data
+ggplot(data = years_data)+
+  stat_count(mapping = aes(x = years), color = "dark green")
 
 ```
 
 ###Chart 2
 ```{r}
-fdsafdsa
+
 ```
 
