@@ -76,10 +76,6 @@ ggplot(years2, aes(x = years, y = count)) +
 ggplot(years2, aes(x = years)) +
   geom_histogram()
 
-library(plotly)
-plot_ly(years2, type = "scatter", x = ~ years, y = ~count)
-
-
 ```  
 
 
