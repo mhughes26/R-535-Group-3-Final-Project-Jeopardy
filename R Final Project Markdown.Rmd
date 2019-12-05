@@ -70,12 +70,10 @@ ggplot(years2, aes(x = years, y = count)) +
 ggplot(years2, aes(x = years, y = count)) +
   geom_col()
 
-ggplot(years2, aes(x = years, y = count)) +
-  geom_line()
-
 ggplot(years2, aes(x = years)) +
   geom_histogram()
 
+<<<<<<< HEAD
 library(ggthemes)
 ggplot(years2, aes(x = years, y = count)) +
   geom_point()+
@@ -105,17 +103,50 @@ ggplot(years2, aes(x = years, y = count)) +
 #library(plotly)
 #plot_ly(years2, type = "scatter", x = ~ years, y = ~count)
 
+=======
+# include this on flex dashboard
+line_plot <- ggplot(years2, aes(x = years, y = count)) +
+  geom_line() +
+  xlab("Years") +
+  ylab("Number of times year given in clue")+
+  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") +
+  theme_few()
+line_plot
+>>>>>>> e0331088012aa13ed285cece9a85971c38b09dbc
 
+scatter_plot
 ```  
-
-
 
 ```{r}
 # pull out top 10 ranking years
-ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 1998, 1970), 
-                top_counts = c(1087, 1024, 1023, 999, 994, 975, 961, 906, 891, 868))
+top_10 <- tibble(Years = 
+                   c(1996, 1999, 1997, 1980, 2000, 
+                     1960, 1995, 1990, 1998, 1970), 
+                Counts = c(1087, 1024, 1023, 999, 
+                           994, 975, 961, 906, 891, 868))
 
+library(knitr)
+kable(top_10, 
+      align = c("r","r"),
+      caption = "Top 10 most mentioned years")
 ```
 
+```{r}
+# use prop.test in flex dashboard
+sum_stats <- years2 %>% 
+summarize(mean_count = mean(count))
+sum_stats
+mean_prop <- 
+  sum_stats/84058
+mean_prop  
+
+prop_96 <-
+  1087/84058 
+prop_96
+
+library(broom)
+binom.test(x = 1087, n = 84058, p = 0.006) %>% 
+  tidy()
+```
 
 
