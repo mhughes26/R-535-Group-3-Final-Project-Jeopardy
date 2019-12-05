@@ -70,12 +70,30 @@ ggplot(years2, aes(x = years, y = count)) +
 ggplot(years2, aes(x = years, y = count)) +
   geom_col()
 
-ggplot(years2, aes(x = years, y = count)) +
-  geom_line()
-
 ggplot(years2, aes(x = years)) +
   geom_histogram()
 
+line_plot <- ggplot(years2, aes(x = years, y = count)) +
+  geom_line() +
+  xlab("Years") +
+  ylab("Number of times year given in clue")+
+  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") +
+  theme_few()
+line_plot
+
+library(ggthemes)
+scatter_plot <- ggplot(years2, aes(x = years, y = count)) +
+  geom_point() +
+  coord_cartesian(xlim = c(1900,2019)) +
+  xlab("Years") +
+  ylab("Number of times year given in clue")+
+  ggtitle("Four digit years found in Jeopardy clues, Season 1-35",
+          subtitle = "Truncated from 1900-2019") +
+  theme_few()
+
+scatter_plot
+
+# find probability that clue would contain 1996
 ```  
 
 
