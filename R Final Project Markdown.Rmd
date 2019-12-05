@@ -30,35 +30,36 @@ answers <- clues %>%
 years_data <- answers %>% 
   mutate(years = str_extract(answer, "[0-9]{4}")) %>%
   filter(str_count(years)==4)%>% 
+  arrange(desc(years)) %>% 
   slice(413:84470) %>% 
-  group_by(years) %>% 
-  mutate(count = n()) %>% 
- arrange(desc(count)) %>% 
- ungroup()
+  group_by(years) 
 
-years_data
+ years_data1 <- years_data %>% 
+   mutate(count = n()) %>% 
+   arrange(desc(count)) %>% 
+   ungroup()
+
+
 ```
 
 
 ```{r}
-ggplot(data = years_data)+
- stat_count(mapping = aes(x = years), color = "dark green")
-
 # transform years column to numeric
-years2 <- transform(years_data, years = as.numeric(years))
+years2 <- transform(years_data1, years = as.numeric(years))
 
 years2
 
 # check data class
 sapply(years2, mode)
 
-
-
 ```
 
 
 ```{r}
 # try out a variety of sample plots 
+
+ggplot(data = years2)+
+ stat_count(mapping = aes(x = years), color = "dark green")
 
 ggplot(years2, aes(x = years)) +
   stat_count(mapping = aes(x = years))
@@ -75,8 +76,8 @@ ggplot(years2, aes(x = years, y = count)) +
 ggplot(years2, aes(x = years)) +
   geom_histogram()
 
-#library(plotly)
-#plot_ly(years2, type = "scatter", x = ~ years, y = ~count)
+library(plotly)
+plot_ly(years2, type = "scatter", x = ~ years, y = ~count)
 
 
 ```  
