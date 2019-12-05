@@ -73,6 +73,7 @@ ggplot(years2, aes(x = years, y = count)) +
 ggplot(years2, aes(x = years)) +
   geom_histogram()
 
+# include this on flex dashboard
 line_plot <- ggplot(years2, aes(x = years, y = count)) +
   geom_line() +
   xlab("Years") +
@@ -81,29 +82,31 @@ line_plot <- ggplot(years2, aes(x = years, y = count)) +
   theme_few()
 line_plot
 
-library(ggthemes)
-scatter_plot <- ggplot(years2, aes(x = years, y = count)) +
-  geom_point() +
-  coord_cartesian(xlim = c(1900,2019)) +
-  xlab("Years") +
-  ylab("Number of times year given in clue")+
-  ggtitle("Four digit years found in Jeopardy clues, Season 1-35",
-          subtitle = "Truncated from 1900-2019") +
-  theme_few()
-
 scatter_plot
-
-# find probability that clue would contain 1996
 ```  
-
-
 
 ```{r}
 # pull out top 10 ranking years
 ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 1998, 1970), 
                 top_counts = c(1087, 1024, 1023, 999, 994, 975, 961, 906, 891, 868))
-
 ```
 
+```{r}
+# use prop.test in flex dashboard
+sum_stats <- years2 %>% 
+summarize(mean_count = mean(count))
+sum_stats
+mean_prop <- 
+  sum_stats/84058
+mean_prop  
+
+prop_96 <-
+  1087/84058 
+prop_96
+
+library(broom)
+binom.test(x = 1087, n = 84058, p = 0.006) %>% 
+  tidy()
+```
 
 
