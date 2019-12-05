@@ -87,8 +87,16 @@ scatter_plot
 
 ```{r}
 # pull out top 10 ranking years
-ranks <- tibble(top_years = c(1996, 1999, 1997, 1980, 2000, 1960, 1995, 1990, 1998, 1970), 
-                top_counts = c(1087, 1024, 1023, 999, 994, 975, 961, 906, 891, 868))
+top_10 <- tibble(Years = 
+                   c(1996, 1999, 1997, 1980, 2000, 
+                     1960, 1995, 1990, 1998, 1970), 
+                Counts = c(1087, 1024, 1023, 999, 
+                           994, 975, 961, 906, 891, 868))
+
+library(knitr)
+kable(top_10, 
+      align = c("r","r"),
+      caption = "Top 10 most mentioned years")
 ```
 
 ```{r}
