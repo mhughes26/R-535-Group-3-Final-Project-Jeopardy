@@ -8,7 +8,7 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 library(tidyverse)
 
 clues <- read_tsv("./data/master_season1-35.tsv")
@@ -85,6 +85,8 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
+#dygraphs
+#plotly
 library(ggthemes)
 line_plot <- ggplot(years2, aes(x = years, y = count)) +
   geom_line() +
