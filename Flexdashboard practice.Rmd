@@ -11,12 +11,17 @@ output:
 library(flexdashboard)
 ```
 
+```{r global_options}
+knitr::opts_chunk$set(echo = FALSE, message = FALSE,
+warning = FALSE)
+```
+
 Column {data-width=650}
 -----------------------------------------------------------------------
 
 ### Chart A
 
-```{r}
+```{r echo = FALSE, messages = FALSE}
 library(tidyverse)
 library(plotly)
 clues <- read_tsv("./data/master_season1-35.tsv")
