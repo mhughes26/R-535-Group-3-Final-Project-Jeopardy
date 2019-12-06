@@ -85,6 +85,8 @@ Column {data-width=350}
 ### Chart B
 
 ```{r}
+#trim out few rows with clues/questions in datatable
+#try out story board layout
 #dygraphs
 #plotly
 library(ggthemes)
