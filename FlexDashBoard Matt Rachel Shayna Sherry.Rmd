@@ -8,6 +8,31 @@ output:
 
 ```{r setup, include=FALSE}
 library(flexdashboard)
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+
+clues <- read_tsv("./data/master_season1-35.tsv")
+
+answers <- clues %>% 
+  select(category, answer, question)
+
+#filter years out of answers, create new column, arrange descending
+years_data <- answers %>% 
+  mutate(years = str_extract(answer, "[0-9]{4}")) %>%
+  filter(str_count(years)==4)%>% 
+  arrange(desc(years)) %>% 
+  slice(413:84470) %>% 
+  group_by(years) 
+
+ years_data1 <- years_data %>% 
+   mutate(count = n()) %>% 
+   arrange(desc(count)) %>% 
+   ungroup()
+ 
+years2 <- transform(years_data1, years = as.numeric(years))
+
+years2
+
 ```
 
 Column {data-width=650}
@@ -16,6 +41,15 @@ Column {data-width=650}
 ### Chart A
 
 ```{r}
+library(ggthemes)
+line_plot <- ggplot(years2, aes(x = years, y = count)) +
+  geom_line() +
+  xlab("Years") +
+  ylab("Number of times year given in clue")+
+  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") +
+  theme_few()
+
+line_plot
 
 ```
 
