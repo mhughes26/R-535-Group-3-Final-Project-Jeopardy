@@ -126,11 +126,10 @@ line_plot
 
 ```{r}
 # pull out top 10 ranking years 
-top_10 <- tibble(Years = 
-                   c(1996, 1999, 1997, 1980, 2000, 
-                     1960, 1995, 1990, 1998, 1970), 
-                Counts = c(1087, 1024, 1023, 999, 
-                           994, 975, 961, 906, 891, 868))
+top_10 <- years_data1 %>% 
+  slice(1:10)
+print(top_10)
+  
 
 #use in flex dashboard
 library(knitr)
@@ -148,16 +147,18 @@ top_10_table
 sum_stats <- years2 %>% 
 summarize(mean_count = mean(count))
 sum_stats
+
+#proportion of answers that have years from total dataset
 mean_prop <- 
-  sum_stats/84058
-mean_prop  
+  nrow(years_data)/nrow(clues)
+print(mean_prop)
 
 prop_96 <-
-  1087/84058 
-prop_96
+  1087/nrow(years_data)
+print(prop_96)
 
 library(broom)
-binom.test(x = 1087, n = 84058, p = 0.006) %>% 
+binom.test(x = 1087, n = nrow(years_data), p = 0.006) %>% 
   tidy()
 ```
 
