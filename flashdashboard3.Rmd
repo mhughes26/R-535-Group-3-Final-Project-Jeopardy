@@ -110,16 +110,9 @@ clues <- read_tsv("./data/master_season1-35.tsv")
 library(ggthemes)
 
 line_plot <- ggplot(years2, aes(x = years, y = count)) +
-  geom_line() +
-  xlab("Years") +
-  ylab("Number of times year given in clue")+
-  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") +
-  theme_few()
-
-line_plot <- ggplot(years2, aes(x = years, y = count)) +
   geom_line(color = "Blue") +
   xlab("Years") +
-  ylab("Number of times year found in clues")+
+  ylab("Frequency")+
   ggtitle("Four digit years found in Jeopardy clues, Season 1-35") 
 
 line_plot
@@ -197,7 +190,7 @@ reference_plot <-
    geom_vline(xintercept=1964,colour="red")+
    geom_vline(xintercept=2000,colour="red")+
   xlab("Years")+
-  ylab("Number of times year given in clue")+
+  ylab("Frequency")+
   ggtitle("Four digit years found in Jeopardy clues,Season 1-35",
           subtitle = "Truncated from 1800-2019")+
   theme_few()
