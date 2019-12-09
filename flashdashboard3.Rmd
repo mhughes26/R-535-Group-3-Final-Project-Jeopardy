@@ -116,7 +116,17 @@ line_plot <- ggplot(years2, aes(x = years, y = count)) +
   ggtitle("Four digit years found in Jeopardy clues, Season 1-35") +
   theme_few()
 
+line_plot <- ggplot(years2, aes(x = years, y = count)) +
+  geom_line(color = "Blue") +
+  xlab("Years") +
+  ylab("Number of times year found in clues")+
+  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") 
+
 line_plot
+
+library(plotly)
+ggplotly(line_plot) %>% 
+  rangeslider()
 ```
 
 
