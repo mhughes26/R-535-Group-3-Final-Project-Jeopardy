@@ -109,18 +109,8 @@ reference_plot <-
 
 reference_plot
 
-#library(plotly)
-#plot_ly(years2, type = "scatter", x = ~ years, y = ~count)
 
-# include this on flex dashboard
-line_plot <- ggplot(years2, aes(x = years, y = count)) +
-  geom_line() +
-  xlab("Years") +
-  ylab("Number of times year given in clue")+
-  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") +
-  theme_few()
 
-line_plot
 
 ```  
 
@@ -160,6 +150,24 @@ print(prop_96)
 library(broom)
 binom.test(x = 1087, n = nrow(years_data), p = 0.006) %>% 
   tidy()
+```
+
+
+```{r}
+
+# create interactive line plot
+line_plot <- ggplot(years2, aes(x = years, y = count)) +
+  geom_line(color = "Blue") +
+  xlab("Years") +
+  ylab("Number of times year found in clues")+
+  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") 
+
+line_plot
+
+library(plotly)
+ggplotly(line_plot) %>% 
+  rangeslider() 
+  
 ```
 
 
