@@ -160,8 +160,7 @@ line_plot <- ggplot(years2, aes(x = years, y = count)) +
   geom_line(color = "Blue") +
   xlab("Years") +
   ylab("Number of times year found in clues")+
-  ggtitle("Four digit years found in Jeopardy clues, Season 1-35") 
-
+  ggtitle("Four digit years found in Jeopardy clues, Season 1-35")
 line_plot
 
 library(plotly)
