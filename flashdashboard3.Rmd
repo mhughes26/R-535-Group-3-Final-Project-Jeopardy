@@ -62,8 +62,7 @@ clues <- read_tsv("./data/master_season1-35.tsv")
 library(ggthemes)
 
 top_10 <- years_data1 %>% 
-  slice(1:10) %>% 
-  prettyNum(x, big.mark = ",")
+  slice(1:10) 
 
 library(knitr)
 top_10_table <- 
@@ -123,7 +122,9 @@ line_plot
 
 library(plotly)
 ggplotly(line_plot) %>% 
-  rangeslider()
+  rangeslider (start = 1000, end = 2020)
+
+
 ```
 
 
