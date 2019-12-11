@@ -20,17 +20,19 @@ Column{data-width=300}
 
 
 Research Question: 
+
 For all seasons of Jeopardy, from Season 1 through Season 35, 
 what are the most common calendar years referenced in an answer? 
 
 Results:
 The top year was 1996. 
-The decade of the '90s was the mostly commonly referenced overall. 
+The decade of the '90s was the most commonly referenced overall. 
 
 24% of all Jeopardy answers contained a year, with 1% of those being 1996. 
 
-Spikes on the graphs are seen at years ending in 0; many clues reference 
-years by the decade or century only. 
+Spikes on the plots are seen at years ending in 0. This trend may be in part to 
+the fact that the four digit years referenced are often in reference to a decade
+(i.e. "The 1990's) or a century (i.e the 1900's)
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
 
