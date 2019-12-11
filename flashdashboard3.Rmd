@@ -61,8 +61,7 @@ years2 <- transform(years_data1, years = as.numeric(years))
 clues <- read_tsv("./data/master_season1-35.tsv")
 library(ggthemes)
 
-top_10 <- years_data1 %>% 
-  slice(1:10) 
+
 
 library(knitr)
 top_10_table <- 
@@ -193,11 +192,11 @@ reference_plot <-
   geom_text(aes(x=1985,label=
               "Challenger Disaster",y=175),angle=90,vjust=0,hjust=0)+
    geom_vline(xintercept=1964,colour="red")+
-   geom_vline(xintercept=2000,colour="red")+
   xlab("Years")+
   ylab("Frequency")+
   ggtitle("Four digit years found in Jeopardy clues,Season 1-35",
-          subtitle = "Truncated from 1800-2019")+
+          subtitle = "Truncated from 1800-2019, 
+          red line @1996:debut of jeopardy")+
   theme_few()
 
 reference_plot
