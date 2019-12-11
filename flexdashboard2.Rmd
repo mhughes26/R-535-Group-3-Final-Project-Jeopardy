@@ -50,76 +50,7 @@ Xie, Yihui (2019). knitr: A General-Purpose Package for Dynamic Report Generatio
   R package version 1.25.
 
 ```{r}
-library(flexdashboard)
-library(tidyverse)
 
-knitr::opts_chunk$set(echo = TRUE)
-
-knitr::opts_chunk$set(echo = FALSE)
-
-library(tidyverse)
-
-clues <- read_tsv("./data/master_season1-35.tsv")
-
-answers <- clues %>% 
-  select(category, answer, question)
-
-#filter years out of answers, create new column, arrange descending
-years_data <- answers %>% 
-  mutate(years = str_extract(answer, "[0-9]{4}")) %>%
-  filter(str_count(years)==4)%>% 
-  arrange(desc(years)) %>% 
-  slice(413:84470) %>% 
-  group_by(years) 
-
- years_data1 <- years_data %>% 
-   summarize(count = n()) %>% 
-   arrange(desc(count)) %>% 
-   ungroup()
- 
-years2 <- transform(years_data1, years = as.numeric(years))
-
-#years2
-#nrow(years2)
-
-clues <- read_tsv("./data/master_season1-35.tsv")
-library(ggthemes)
-reference_plot <- 
-  ggplot() +
-  geom_point(data = years2, aes(x = years, y = count))+
-  coord_cartesian(xlim = c(1800,2019))+
-  geom_vline(xintercept=1996,colour="blue")+
-  geom_text(aes(x=1996,label="1996",y=1087,vjust=0,hjust=0),
-            colour="black",
-            text=element_text(size=11))+
-  geom_text(aes(x=1995,label=
-              "US Olympics",y=200),angle=90,vjust=0,hjust=0)+
-  geom_vline(xintercept=1861,colour="blue")+
-  geom_text(aes(x=1860, label=
-              "American Civil War",y=350),angle=90,vjust=0,hjust=0)+
-  geom_vline(xintercept=1914,colour="blue")+
-  geom_text(aes(x=1913,label="WWI",y=500),angle=90,vjust=0,hjust=0)+
-  geom_vline(xintercept=1939,colour="blue")+
-  geom_text(aes(x=1938,label="WWII",y=500),angle=90,vjust=0,hjust=0)+
-  geom_vline(xintercept=1955,colour="blue")+
-  geom_text(aes(x=1954,label="Vietnam",y=100),angle=90,vjust=0,hjust=0)+
-  geom_vline(xintercept=2008,colour="blue")+
-  geom_text(aes(x=2007,label="911 Attacks",y=200),angle=90,vjust=0,hjust=0)+
-  geom_vline(xintercept=1963,colour="blue")+
-  geom_text(aes(x=1962,label=
-              "JFK Assassination",y=100),angle=90,vjust=0,hjust=0)+
-  geom_vline(xintercept=1986,colour="blue")+
-  geom_text(aes(x=1985,label=
-              "Challenger Disaster",y=175),angle=90,vjust=0,hjust=0)+
-   geom_vline(xintercept=1964,colour="red")+
-   geom_vline(xintercept=2000,colour="red")+
-  xlab("Years")+
-  ylab("Number of times year given in clue")+
-  ggtitle("Four digit years found in Jeopardy clues,Season 1-35",
-          subtitle = "Truncated from 1800-2019")+
-  theme_few()
-
-reference_plot
 ```
 
 
