@@ -29,8 +29,6 @@ years by the decade or century only.
 library(flexdashboard)
 library(tidyverse)
 
-knitr::opts_chunk$set(echo = TRUE)
-
 knitr::opts_chunk$set(echo = FALSE)
 
 library(tidyverse)
@@ -67,6 +65,12 @@ top_10 <- years_data1 %>%
   mutate(count = prettyNum(count,big.mark = ","))
 
 top_10_table
+
+#library(knitr)
+#top_10_table <- 
+  #kable(top_10, 
+      #align = c("r","r"),
+      #caption = "Top 10 most mentioned years"
 ```
 
 Column{data-width=700}
