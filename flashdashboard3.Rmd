@@ -61,13 +61,10 @@ years2 <- transform(years_data1, years = as.numeric(years))
 clues <- read_tsv("./data/master_season1-35.tsv")
 library(ggthemes)
 
-
-
 library(knitr)
-top_10_table <- 
-  kable(top_10, 
-      align = c("r","r"),
-      caption = "Top 10 most mentioned years")
+top_10 <- years_data1 %>% 
+  slice(1:10) %>% 
+  mutate(count = prettyNum(count,big.mark = ","))
 
 top_10_table
 ```
