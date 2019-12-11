@@ -73,7 +73,7 @@ Column{data-width=700}
 -----------------------------------------------------------------------
 
 
-### Historical Context
+### Frequency of years referenced
 
 ```{r}
 line_plot <- ggplot(years2, aes(x = years, y = count)) +
@@ -92,7 +92,7 @@ ggplotly(line_plot) %>%
 ```
 
 
-### Frequency of Years Referenced
+### Historical Context
 
 ```{r, fig.width = 10, fig.height = 5}
 library(ggthemes)
