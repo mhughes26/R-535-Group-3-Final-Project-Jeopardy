@@ -33,11 +33,12 @@ The decade of the '90s was the most commonly referenced overall.
 
 Spikes on the plots are seen at years ending in 0. This trend may be in part to 
 the fact that the four digit years given are often in reference to a decade
-(i.e. "The 1990's) or a century (i.e the 1900's)
+(i.e. "The 1990's") or a century (i.e "The 1900's")
 ```{r}
 knitr::opts_chunk$set(echo = FALSE)
 
 # read in data
+
 clues <- read_tsv("./data/master_season1-35.tsv")
 
 answers <- clues %>% 
