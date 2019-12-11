@@ -63,7 +63,7 @@ library(ggthemes)
 
 top_10 <- years_data1 %>% 
   slice(1:10) %>% 
-  prettyNum(x, big.mark = ",")
+  mutate(count = prettyNum(count, big.mark = ","))
 
 library(knitr)
 top_10_table <- 
