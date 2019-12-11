@@ -191,7 +191,6 @@ reference_plot <-
   geom_text(aes(x=1985,label=
               "Challenger Disaster",y=175),angle=90,vjust=0,hjust=0)+
    geom_vline(xintercept=1964,colour="red")+
-   geom_vline(xintercept=2000,colour="red")+
   xlab("Years")+
   ylab("Frequency")+
   ggtitle("Four digit years found in Jeopardy clues,Season 1-35",
