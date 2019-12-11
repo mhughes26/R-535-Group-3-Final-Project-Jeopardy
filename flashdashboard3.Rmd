@@ -5,7 +5,7 @@ output:
   flexdashboard::flex_dashboard
 ---
 
-```{r setup, include=FALSE}
+```{r setup, include=FALSE, echo = FALSE}
 library(flexdashboard)
 ```
 
@@ -59,18 +59,17 @@ years2 <- transform(years_data1, years = as.numeric(years))
 clues <- read_tsv("./data/master_season1-35.tsv")
 library(ggthemes)
 
-library(knitr)
+# create table showing top 10 most frequent dates
 top_10 <- years_data1 %>% 
   slice(1:10) %>% 
   mutate(count = prettyNum(count,big.mark = ","))
 
+library(knitr)
+top_10_table <- 
+  kable(top_10, 
+      align = c("r","r"),
+      caption = "Top 10 most mentioned years")
 top_10_table
-
-#library(knitr)
-#top_10_table <- 
-  #kable(top_10, 
-      #align = c("r","r"),
-      #caption = "Top 10 most mentioned years"
 ```
 
 Column{data-width=700}
