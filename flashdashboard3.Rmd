@@ -62,8 +62,7 @@ clues <- read_tsv("./data/master_season1-35.tsv")
 library(ggthemes)
 
 top_10 <- years_data1 %>% 
-  slice(1:10) %>% 
-  prettyNum(x, big.mark = ",")
+  slice(1:10) 
 
 library(knitr)
 top_10_table <- 
@@ -195,7 +194,8 @@ reference_plot <-
   xlab("Years")+
   ylab("Frequency")+
   ggtitle("Four digit years found in Jeopardy clues,Season 1-35",
-          subtitle = "Truncated from 1800-2019")+
+          subtitle = "Truncated from 1800-2019, 
+          red line @1996:debut of jeopardy")+
   theme_few()
 
 reference_plot
