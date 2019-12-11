@@ -17,8 +17,11 @@ Column{data-width=300}
 
 ### Background Information
 
+
+
 Research Question: 
-For all seasons of Jeopardy, from Season 1 through Season 35, what are the most common calendar years referenced in an answer? 
+For all seasons of Jeopardy, from Season 1 through Season 35, 
+what are the most common calendar years referenced in an answer? 
 
 Results:
 The top year was 1996. 
@@ -91,7 +94,7 @@ ggplotly(line_plot) %>%
 
 ### Frequency of Years Referenced
 
-```{r}
+```{r, fig.width = 10, fig.height = 5}
 library(ggthemes)
 reference_plot <- 
   ggplot() +
@@ -123,9 +126,8 @@ reference_plot <-
    geom_vline(xintercept=1964,colour="red")+
   xlab("Years")+
   ylab("Frequency")+
-  ggtitle("Four digit years found in Jeopardy clues,Season 1-35",
-          subtitle = "Truncated from 1800-2019, 
-          red line @1996:debut of jeopardy")+
+  ggtitle("Four digit years (1800-2019) found in Jeopardy clues, Season 1-35",
+          subtitle =  "red line = 1984 debut of Jeopardy")+
   theme_few()
 
 reference_plot
